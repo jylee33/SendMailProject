@@ -86,16 +86,7 @@ namespace SendMailProject
         {
             try
             {
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress("yubbi33@gmail.com", ConfigurationManager.AppSettings["SenderName"]);
-                mail.Subject = txtTitle.Text;
-                mail.IsBodyHtml = true;
-                mail.Body = richBody.Text + "<p></p>회신 받을 주소 : " + "yubbi@nate.com";
-                mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
-                mail.SubjectEncoding = Encoding.UTF8;
-                mail.BodyEncoding = Encoding.UTF8;
-
-                mail.To.Add(new MailAddress("jylee@hamonsoft.co.kr"));
+                richProgress.Clear();
 
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
@@ -105,17 +96,66 @@ namespace SendMailProject
                 smtp.EnableSsl = true;
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["MailID"], ConfigurationManager.AppSettings["MailPW"]);
+        
+                int totalCnt = dataGridView1.Rows.Count;
+                int cnt = 0;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    string mailFromAddress = "yubbi33@gmail.com";
+                    string mailFromName = "HAMONSOFT";
+                    string mailToAddress = "jylee@hamonsoft.co.kr";
+                    for(int col = 0; col < dataGridView1.Columns.Count; col++)
+                    {
+                        switch(col)
+                        {
+                            case 0:
+                                mailFromAddress = row.Cells[col].Value.ToString();
+                                break;
+                            case 1:
+                                mailFromName = row.Cells[col].Value.ToString();
+                                break;
+                            case 2:
+                                mailToAddress = row.Cells[col].Value.ToString();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
 
-                smtp.Send(mail);
-                mail.Dispose();
+                    MailMessage mail = new MailMessage();
+                    mail.From = new MailAddress(mailFromAddress, mailFromName);
+                    mail.Subject = txtTitle.Text;
+                    mail.IsBodyHtml = true;
+                    mail.Body = richBody.Text + "<p></p>회신 받을 주소 : " + mailFromAddress;
+                    //mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+                    mail.SubjectEncoding = Encoding.UTF8;
+                    mail.BodyEncoding = Encoding.UTF8;
+
+                    mail.To.Add(new MailAddress(mailToAddress));
+
+                    smtp.Send(mail);
+                    mail.Dispose();
+                   
+                    string message = string.Format("Sent Mail [{0} / {1}]- from : {2} [{3}] , to : {4}", ++cnt, totalCnt, mailFromName, mailFromAddress, mailToAddress);
+                    appendProgress(message);
+                }
+
+
+
             }
             catch(Exception ex)
             {
                 Console.WriteLine("에러 발생 : " + ex.Message);
+                appendProgress("에러 발생 : " + ex.Message);
             }
 
-            Console.WriteLine("이메일 전달 완료!");
-            richProgress.AppendText("이메일 전달 완료\r\n");
+            Console.WriteLine("메일 전송 완료!");
+            appendProgress("메일 전송 완료");
+        }
+
+        private void appendProgress(string message)
+        {
+            richProgress.AppendText(message + "\r\n");
         }
 
         private void btnClose_Click(object sender, EventArgs e)
