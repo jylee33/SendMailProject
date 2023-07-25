@@ -1,11 +1,15 @@
-﻿using System;
+﻿using SendMailProject.Properties;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SendMailProject
@@ -19,6 +23,19 @@ namespace SendMailProject
         {
             InitializeComponent();
         }
+
+        private void btnSampleDownload_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+        }
+
+        private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string destPath = saveFileDialog1.FileName;
+            System.IO.FileInfo sourceFileInfo = new System.IO.FileInfo("resources\\sample.xlsx");
+            System.IO.File.Copy(sourceFileInfo.FullName, destPath);
+        }
+
 
         private void btnExcelLoad_Click(object sender, EventArgs e)
         {
@@ -84,9 +101,15 @@ namespace SendMailProject
 
         private void btnSend_Click(object sender, EventArgs e)
         {
+            Thread mailThread = new Thread(sendMail);
+            mailThread.Start();
+        }
+
+        private void sendMail()
+        {
             try
             {
-                richProgress.Clear();
+                appendProgress("------------------- 메일 전송 시작 -------------------");
 
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
@@ -109,10 +132,10 @@ namespace SendMailProject
                         switch(col)
                         {
                             case 0:
-                                mailFromAddress = row.Cells[col].Value.ToString();
+                                mailFromName = row.Cells[col].Value.ToString();
                                 break;
                             case 1:
-                                mailFromName = row.Cells[col].Value.ToString();
+                                mailFromAddress = row.Cells[col].Value.ToString();
                                 break;
                             case 2:
                                 mailToAddress = row.Cells[col].Value.ToString();
@@ -126,7 +149,12 @@ namespace SendMailProject
                     mail.From = new MailAddress(mailFromAddress, mailFromName);
                     mail.Subject = txtTitle.Text;
                     mail.IsBodyHtml = true;
-                    mail.Body = richBody.Text + "<p></p>회신 받을 주소 : " + mailFromAddress;
+
+                    this.BeginInvoke(new MethodInvoker(delegate
+                    {
+                        mail.Body = richBody.Text + "<p></p>회신 받을 주소 : " + mailFromAddress;
+                    }));
+
                     //mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                     mail.SubjectEncoding = Encoding.UTF8;
                     mail.BodyEncoding = Encoding.UTF8;
@@ -136,11 +164,9 @@ namespace SendMailProject
                     smtp.Send(mail);
                     mail.Dispose();
                    
-                    string message = string.Format("Sent Mail [{0} / {1}]- from : {2} [{3}] , to : {4}", ++cnt, totalCnt, mailFromName, mailFromAddress, mailToAddress);
+                    string message = string.Format("Sent Mail [{0,3} / {1,3}]- from : {2} [{3}] , to : {4}", ++cnt, totalCnt, mailFromName, mailFromAddress, mailToAddress);
                     appendProgress(message);
                 }
-
-
 
             }
             catch(Exception ex)
@@ -149,13 +175,17 @@ namespace SendMailProject
                 appendProgress("에러 발생 : " + ex.Message);
             }
 
-            Console.WriteLine("메일 전송 완료!");
-            appendProgress("메일 전송 완료");
+            Console.WriteLine("------------------- 메일 전송 완료 -------------------");
+            appendProgress("------------------- 메일 전송 완료 -------------------");
         }
 
         private void appendProgress(string message)
         {
-            richProgress.AppendText(message + "\r\n");
+            this.BeginInvoke(new MethodInvoker(delegate
+            {
+                richProgress.AppendText(message + "\r\n");
+            }));
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -163,5 +193,16 @@ namespace SendMailProject
             this.Close();
         }
 
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            e.PaintCells(e.ClipBounds, DataGridViewPaintParts.All);
+            e.PaintHeader(DataGridViewPaintParts.Background | DataGridViewPaintParts.Border | DataGridViewPaintParts.Focus | DataGridViewPaintParts.SelectionBackground);
+            e.Handled = true;
+
+            using (SolidBrush b = new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
+            }
+        }
     }
 }

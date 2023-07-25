@@ -15,14 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_4B545B3ABF0F4199D755FA8D8F194E56"
-        "OwnerKey" = "8:_F92679D89A4C4C78A700626B39568F0D"
+        "MsmKey" = "8:_513E092D013A4CF990340CB0762EF171"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_4B545B3ABF0F4199D755FA8D8F194E56"
+        "MsmKey" = "8:_5677A8CDCC71F9C3623AB6E7C201B89F"
         "OwnerKey" = "8:_F875402EE6804091A05C94AA107F1BD8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5677A8CDCC71F9C3623AB6E7C201B89F"
+        "OwnerKey" = "8:_F92679D89A4C4C78A700626B39568F0D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -40,7 +46,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4B545B3ABF0F4199D755FA8D8F194E56"
+        "OwnerKey" = "8:_F92679D89A4C4C78A700626B39568F0D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,7 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F92679D89A4C4C78A700626B39568F0D"
+        "OwnerKey" = "8:_5677A8CDCC71F9C3623AB6E7C201B89F"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -73,6 +79,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -89,6 +103,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -118,14 +148,34 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4B545B3ABF0F4199D755FA8D8F194E56"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_513E092D013A4CF990340CB0762EF171"
+            {
+            "SourcePath" = "8:..\\SendMailProject\\resources\\sample.xlsx"
+            "TargetName" = "8:sample.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_B4EE8C92025447529FDFC1255FF44E17"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5677A8CDCC71F9C3623AB6E7C201B89F"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_4B545B3ABF0F4199D755FA8D8F194E56"
+                    "_5677A8CDCC71F9C3623AB6E7C201B89F"
                     {
                     "Name" = "8:System.Net.Http.dll"
                     "Attributes" = "3:512"
@@ -187,6 +237,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_B4EE8C92025447529FDFC1255FF44E17"
+                    {
+                    "Name" = "8:resources"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_3EB29B4AFD96482784B8FEDF8AA76722"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -204,9 +265,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:SendMailSetup"
+        "ProductName" = "8:SendMail"
         "ProductCode" = "8:{F2FA4FF7-09F9-497E-B03D-FBE2A5067D30}"
-        "PackageCode" = "8:{BFA60653-6F29-45AC-90C0-3ACA4546FA26}"
+        "PackageCode" = "8:{2E741657-CA21-4A6C-8C2D-6ADCB15A3FE0}"
         "UpgradeCode" = "8:{769FA98B-2358-440A-BCE1-32B0529BCB5D}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
