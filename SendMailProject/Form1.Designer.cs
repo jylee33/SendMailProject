@@ -31,19 +31,19 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.richProgress = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnExcelLoad = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.richBody = new System.Windows.Forms.RichTextBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.btnSampleDownload = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -107,17 +107,6 @@
             this.richProgress.TabIndex = 0;
             this.richProgress.Text = "";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 155);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(750, 22);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "3. 메일 송/수신자 리스트";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -138,22 +127,6 @@
             this.btnExcelLoad.Text = "2. 엑셀 불러오기";
             this.btnExcelLoad.UseVisualStyleBackColor = true;
             this.btnExcelLoad.Click += new System.EventHandler(this.btnExcelLoad_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 180);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.tableLayoutPanel1.SetRowSpan(this.dataGridView1, 4);
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(750, 383);
-            this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
             // 
             // btnClose
             // 
@@ -188,10 +161,32 @@
     ".co.kr/wp-content/uploads/2019/07/it-specialist0.png\">\n<br>\n<a href=\\\"http://ham" +
     "onsoft.co.kr\\\">하몬소프트</a>\n";
             // 
-            // openFileDialog1
+            // label1
             // 
-            this.openFileDialog1.Filter = "Excel files |*.xlsx";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            this.label1.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 155);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(750, 22);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "3. 메일 송/수신자 리스트";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 180);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.tableLayoutPanel1.SetRowSpan(this.dataGridView1, 4);
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.Size = new System.Drawing.Size(750, 383);
+            this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
             // 
             // label4
             // 
@@ -223,11 +218,6 @@
             this.btnSampleDownload.UseVisualStyleBackColor = true;
             this.btnSampleDownload.Click += new System.EventHandler(this.btnSampleDownload_Click);
             // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.Filter = "Excel files |*.xlsx";
-            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
-            // 
             // richTextBox1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.richTextBox1, 3);
@@ -240,6 +230,16 @@
             this.richTextBox1.Text = "[사용법]\n1. 엑셀 샘플 다운로드를 해서 발/수신자 정보를 편집 후 저장한다.\n2. 엑셀 불러오기를 통해 저장된 발/수신자 정보를 불러온다.\n3" +
     ". 메일 송/수신자 리스트를 확인한다.\n4. 메일 제목을 수정/확인한다.\n5. 메일 본문을 HTML 형식으로 수정/확인한다.\n6. 메일 전송을 " +
     "실행한다.";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.Filter = "Excel files |*.xlsx";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "Excel files |*.xlsx";
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
             // Form1
             // 

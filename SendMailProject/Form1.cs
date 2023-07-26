@@ -112,10 +112,10 @@ namespace SendMailProject
                 appendProgress("------------------- 메일 전송 시작 -------------------");
 
                 SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
+                smtp.Host = ConfigurationManager.AppSettings["Host"];
+                smtp.Port = Int32.Parse(ConfigurationManager.AppSettings["Port"]);
                 smtp.Timeout = 10000;
-                smtp.UseDefaultCredentials = true;
+                smtp.UseDefaultCredentials = false;
                 smtp.EnableSsl = true;
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["MailID"], ConfigurationManager.AppSettings["MailPW"]);
