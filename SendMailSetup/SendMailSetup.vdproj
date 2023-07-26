@@ -86,6 +86,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2(x86 및 x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Access.Database.Engine.2010"
+                    {
+                    "Name" = "8:Microsoft Access database engine 2010 (x86, x64)"
+                    "ProductCode" = "8:Access.Database.Engine.2010"
+                    }
+                }
             }
         }
         "Release"
@@ -114,8 +127,13 @@
                 {
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "Name" = "8:Microsoft .NET Framework 4.7.2(x86 및 x64)"
                     "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Access.Database.Engine.2010"
+                    {
+                    "Name" = "8:Microsoft Access database engine 2010 (x86, x64)"
+                    "ProductCode" = "8:Access.Database.Engine.2010"
                     }
                 }
             }
@@ -266,15 +284,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SendMail"
-        "ProductCode" = "8:{F2FA4FF7-09F9-497E-B03D-FBE2A5067D30}"
-        "PackageCode" = "8:{2E741657-CA21-4A6C-8C2D-6ADCB15A3FE0}"
+        "ProductCode" = "8:{00B651E0-CEE7-4099-927F-372E9FE62EFF}"
+        "PackageCode" = "8:{FA2EE4DF-0014-4F57-88EB-440A6F5FA45A}"
         "UpgradeCode" = "8:{769FA98B-2358-440A-BCE1-32B0529BCB5D}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:HamonSoft"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
