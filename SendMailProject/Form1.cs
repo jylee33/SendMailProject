@@ -33,7 +33,7 @@ namespace SendMailProject
         {
             string destPath = saveFileDialog1.FileName;
             System.IO.FileInfo sourceFileInfo = new System.IO.FileInfo("resources\\sample.xlsx");
-            System.IO.File.Copy(sourceFileInfo.FullName, destPath);
+            System.IO.File.Copy(sourceFileInfo.FullName, destPath, true);
         }
 
 
