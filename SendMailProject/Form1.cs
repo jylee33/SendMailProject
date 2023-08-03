@@ -152,7 +152,7 @@ namespace SendMailProject
 
                     this.BeginInvoke(new MethodInvoker(delegate
                     {
-                        mail.Body = richBody.Text + "<p></p>회신 받을 주소 : " + mailFromAddress;
+                        mail.Body = richBody.Text + "<p></p>본 메일은 발신전용입니다.<br>회신 받을 주소 : " + mailFromAddress;
                     }));
 
                     //mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
